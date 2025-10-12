@@ -3,3 +3,4 @@ declare module "mammoth";
 declare module "pptxgenjs";
 declare module "html2canvas";
 declare module "xlsx";
+declare module "html2canvas";
