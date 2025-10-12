@@ -1,3 +1,4 @@
+// src/pages/PdfToJpg.tsx
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -5,13 +6,12 @@ import { FileUpload } from "@/components/FileUpload";
 import { Button } from "@/components/ui/button";
 import { Download, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
-import pdfjsWorker from "pdfjs-dist/legacy/build/pdf.worker.entry";
+import * as pdfjsLib from "pdfjs-dist";
 import { saveAs } from "file-saver";
-import JSZip from "jszip"; // ✅ Add JSZip for ZIP creation
+import JSZip from "jszip";
 
-// ✅ Proper worker setup for Vite + Netlify
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
+// ✅ Use CDN worker to avoid Netlify build issues
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
 const PdfToJpg = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -24,6 +24,7 @@ const PdfToJpg = () => {
     }
 
     setProcessing(true);
+
     try {
       const arrayBuffer = await file.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
@@ -41,7 +42,8 @@ const PdfToJpg = () => {
         canvas.width = viewport.width;
         canvas.height = viewport.height;
 
-        await page.render({ canvasContext: context, viewport }).promise;
+        // ✅ Include 'canvas' in render parameters to fix TS error
+        await page.render({ canvas, canvasContext: context, viewport }).promise;
 
         const blob: Blob = await new Promise((resolve) =>
           canvas.toBlob((b) => resolve(b as Blob), "image/jpeg", 0.95)
