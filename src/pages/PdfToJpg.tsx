@@ -5,17 +5,13 @@ import { FileUpload } from "@/components/FileUpload";
 import { Button } from "@/components/ui/button";
 import { Download, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import * as pdfjsLib from "pdfjs-dist";
-import pdfjsWorker from "pdfjs-dist/build/pdf.worker.min.mjs";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
+import pdfjsWorker from "pdfjs-dist/legacy/build/pdf.worker.entry";
 import { saveAs } from "file-saver";
 import JSZip from "jszip"; // ✅ Add JSZip for ZIP creation
 
 // ✅ Proper worker setup for Vite + Netlify
-pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(
-  new Blob([`importScripts('${pdfjsWorker}')`], {
-    type: "application/javascript",
-  })
-);
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 const PdfToJpg = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -45,14 +41,10 @@ const PdfToJpg = () => {
         canvas.width = viewport.width;
         canvas.height = viewport.height;
 
-        await page.render({ canvasContext: context, viewport, canvas }).promise;
+        await page.render({ canvasContext: context, viewport }).promise;
 
         const blob: Blob = await new Promise((resolve) =>
-          canvas.toBlob(
-            (b) => resolve(b as Blob),
-            "image/jpeg",
-            0.95
-          )
+          canvas.toBlob((b) => resolve(b as Blob), "image/jpeg", 0.95)
         );
 
         if (numPages > 1) {
