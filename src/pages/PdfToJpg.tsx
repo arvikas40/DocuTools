@@ -7,15 +7,14 @@ import { Button } from "@/components/ui/button";
 import { Download, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
-import pdfjsWorker from "pdfjs-dist/legacy/build/pdf.worker.js";
 import { saveAs } from "file-saver";
 import JSZip from "jszip";
 
-// ✅ Proper PDF.js worker setup using Blob URL (Netlify-friendly)
-const workerBlob = new Blob([`importScripts("${pdfjsWorker}")`], {
-  type: "application/javascript",
-});
-pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(workerBlob);
+// ✅ Vite + Netlify-safe worker setup
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/legacy/build/pdf.worker.min.js",
+  import.meta.url
+).toString();
 
 const PdfToJpg = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -46,7 +45,7 @@ const PdfToJpg = () => {
         canvas.width = viewport.width;
         canvas.height = viewport.height;
 
-        // ✅ Include 'canvas' in render parameters to fix TS error
+        // ✅ TypeScript fix: include 'canvas' in render parameters
         await page.render({ canvas, canvasContext: context, viewport }).promise;
 
         const blob: Blob = await new Promise((resolve) =>
