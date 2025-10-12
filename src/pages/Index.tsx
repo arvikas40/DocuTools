@@ -158,51 +158,65 @@ const Index = () => {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-background py-20 sm:py-32">
-          <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
-          
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center space-y-8 max-w-4xl mx-auto">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-                Professional PDF Tools
-                <span className="block mt-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  All in One Place
-                </span>
-              </h1>
-              
-              <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
-                Merge, split, compress, convert, and edit PDF files with our free online tools. 
-                Fast, secure, and no installation required.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  size="lg" 
-                  className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity text-lg px-8 h-12"
-                  onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  Get Started
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-              
-              <div className="flex flex-wrap justify-center gap-8 pt-8 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-primary" />
-                  <span>100% Free</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-primary" />
-                  <span>Secure Processing</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-primary" />
-                  <span>No Installation</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      <section
+  className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-background py-20 sm:py-32"
+  aria-label="Hero Section - Professional PDF Tools"
+>
+  {/* Background grid */}
+  <div
+    className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10"
+    aria-hidden="true"
+  />
+
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center space-y-8 max-w-4xl mx-auto">
+      {/* Main Heading */}
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+        Professional PDF Tools
+        <span className="block mt-2 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+          All in One Place
+        </span>
+      </h1>
+
+      {/* Subheading with keywords */}
+      <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
+        Merge, split, compress, convert, and edit PDF files online. Fast, secure, and no installation required.
+        Our free PDF tools help you manage documents efficiently.
+      </p>
+
+      {/* Call to Action */}
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <Button
+          size="lg"
+          className="bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity text-lg px-8 h-12"
+          onClick={() =>
+            document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })
+          }
+        >
+          Get Started
+          <ArrowRight className="ml-2 h-5 w-5" aria-hidden="true" />
+        </Button>
+      </div>
+
+      {/* Features / Benefits */}
+      <ul className="flex flex-wrap justify-center gap-8 pt-8 text-sm text-muted-foreground">
+        <li className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+          <span>100% Free</span>
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+          <span>Secure Processing</span>
+        </li>
+        <li className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+          <span>No Installation Required</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 
         {/* Services Section */}
         <section id="services" className="py-20">

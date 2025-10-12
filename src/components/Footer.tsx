@@ -33,9 +33,21 @@ export const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Company</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors flex items-center gap-2"><Info className="h-4 w-4" />About Us</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors flex items-center gap-2"><Shield className="h-4 w-4" />Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors flex items-center gap-2"><Mail className="h-4 w-4" />Contact</a></li>
+              <li>
+                <Link to="/about" className="hover:text-primary transition-colors flex items-center gap-2">
+                  <Info className="h-4 w-4" />About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy-policy" className="hover:text-primary transition-colors flex items-center gap-2">
+                  <Shield className="h-4 w-4" />Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="hover:text-primary transition-colors flex items-center gap-2">
+                  <Mail className="h-4 w-4" />Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -48,7 +60,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} DocuTools. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} DocuTools - <a href="https://vedavue.co.in/" className="hover:text-primary underline">VedaVue</a>. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -20,6 +20,7 @@ import WordToPdf from "./pages/WordToPdf";
 import ExcelToPdf from "./pages/ExcelToPdf";
 import PptToPdf from "./pages/PptToPdf";
 import HtmlToPdf from "./pages/HtmlToPdf";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/pdf-to-excel" element={<ComingSoon title="PDF to Excel" description="Convert PDF to spreadsheets" />} />
           <Route path="/crop" element={<ComingSoon title="Crop PDF" description="Trim and adjust PDF page margins" />} />
           <Route path="/edit" element={<ComingSoon title="Edit PDF" description="Edit text and content in your PDF" />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

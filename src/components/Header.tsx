@@ -7,12 +7,20 @@ export const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
+            {/* Icon */}
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent">
               <FileText className="h-6 w-6 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              DocuTools
-            </span>
+
+            {/* Text + Tagline */}
+            <div className="flex flex-col leading-tight">
+              <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                DocuTools
+              </span>
+              <span className="text-xs text-muted-foreground mt-0.5">
+                by VedaVue
+              </span>
+            </div>
           </Link>
           
           <nav className="hidden md:flex items-center gap-6">
