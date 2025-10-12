@@ -9,6 +9,13 @@ import MergePDF from "./pages/MergePDF";
 import SplitPDF from "./pages/SplitPDF";
 import CompressPDF from "./pages/CompressPDF";
 import RotatePDF from "./pages/RotatePDF";
+import RemovePages from "./pages/RemovePages";
+import ExtractPages from "./pages/ExtractPages";
+import JpgToPdf from "./pages/JpgToPdf";
+import PdfToJpg from "./pages/PdfToJpg";
+import AddWatermark from "./pages/AddWatermark";
+import AddPageNumbers from "./pages/AddPageNumbers";
+import ComingSoon from "./pages/ComingSoon";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +31,21 @@ const App = () => (
           <Route path="/split" element={<SplitPDF />} />
           <Route path="/compress" element={<CompressPDF />} />
           <Route path="/rotate" element={<RotatePDF />} />
+          <Route path="/remove-pages" element={<RemovePages />} />
+          <Route path="/extract-pages" element={<ExtractPages />} />
+          <Route path="/jpg-to-pdf" element={<JpgToPdf />} />
+          <Route path="/pdf-to-jpg" element={<PdfToJpg />} />
+          <Route path="/add-watermark" element={<AddWatermark />} />
+          <Route path="/add-page-numbers" element={<AddPageNumbers />} />
+          <Route path="/word-to-pdf" element={<ComingSoon title="WORD to PDF" description="Convert Word documents to PDF format" />} />
+          <Route path="/ppt-to-pdf" element={<ComingSoon title="PowerPoint to PDF" description="Convert presentations to PDF format" />} />
+          <Route path="/excel-to-pdf" element={<ComingSoon title="Excel to PDF" description="Convert spreadsheets to PDF format" />} />
+          <Route path="/html-to-pdf" element={<ComingSoon title="HTML to PDF" description="Convert web pages to PDF format" />} />
+          <Route path="/pdf-to-word" element={<ComingSoon title="PDF to WORD" description="Convert PDF to editable Word documents" />} />
+          <Route path="/pdf-to-ppt" element={<ComingSoon title="PDF to PowerPoint" description="Convert PDF to presentations" />} />
+          <Route path="/pdf-to-excel" element={<ComingSoon title="PDF to Excel" description="Convert PDF to spreadsheets" />} />
+          <Route path="/crop" element={<ComingSoon title="Crop PDF" description="Trim and adjust PDF page margins" />} />
+          <Route path="/edit" element={<ComingSoon title="Edit PDF" description="Edit text and content in your PDF" />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
