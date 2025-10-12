@@ -6,12 +6,16 @@ import { FileUpload } from "@/components/FileUpload";
 import { Button } from "@/components/ui/button";
 import { Download, Loader2 } from "lucide-react";
 import { toast } from "sonner";
-import * as pdfjsLib from "pdfjs-dist";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
+import pdfjsWorker from "pdfjs-dist/legacy/build/pdf.worker.js";
 import { saveAs } from "file-saver";
 import JSZip from "jszip";
 
-// ✅ Use CDN worker to avoid Netlify build issues
-pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+// ✅ Proper PDF.js worker setup using Blob URL (Netlify-friendly)
+const workerBlob = new Blob([`importScripts("${pdfjsWorker}")`], {
+  type: "application/javascript",
+});
+pdfjsLib.GlobalWorkerOptions.workerSrc = URL.createObjectURL(workerBlob);
 
 const PdfToJpg = () => {
   const [file, setFile] = useState<File | null>(null);
