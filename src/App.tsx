@@ -16,6 +16,10 @@ import PdfToJpg from "./pages/PdfToJpg";
 import AddWatermark from "./pages/AddWatermark";
 import AddPageNumbers from "./pages/AddPageNumbers";
 import ComingSoon from "./pages/ComingSoon";
+import WordToPdf from "./pages/WordToPdf";
+import ExcelToPdf from "./pages/ExcelToPdf";
+import PptToPdf from "./pages/PptToPdf";
+import HtmlToPdf from "./pages/HtmlToPdf";
 
 const queryClient = new QueryClient();
 
@@ -37,10 +41,10 @@ const App = () => (
           <Route path="/pdf-to-jpg" element={<PdfToJpg />} />
           <Route path="/add-watermark" element={<AddWatermark />} />
           <Route path="/add-page-numbers" element={<AddPageNumbers />} />
-          <Route path="/word-to-pdf" element={<ComingSoon title="WORD to PDF" description="Convert Word documents to PDF format" />} />
-          <Route path="/ppt-to-pdf" element={<ComingSoon title="PowerPoint to PDF" description="Convert presentations to PDF format" />} />
-          <Route path="/excel-to-pdf" element={<ComingSoon title="Excel to PDF" description="Convert spreadsheets to PDF format" />} />
-          <Route path="/html-to-pdf" element={<ComingSoon title="HTML to PDF" description="Convert web pages to PDF format" />} />
+          <Route path="/word-to-pdf" element={<WordToPdf />} />
+          <Route path="/ppt-to-pdf" element={<PptToPdf />} />
+          <Route path="/excel-to-pdf" element={<ExcelToPdf />} />
+          <Route path="/html-to-pdf" element={<HtmlToPdf />} />
           <Route path="/pdf-to-word" element={<ComingSoon title="PDF to WORD" description="Convert PDF to editable Word documents" />} />
           <Route path="/pdf-to-ppt" element={<ComingSoon title="PDF to PowerPoint" description="Convert PDF to presentations" />} />
           <Route path="/pdf-to-excel" element={<ComingSoon title="PDF to Excel" description="Convert PDF to spreadsheets" />} />
