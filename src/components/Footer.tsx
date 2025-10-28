@@ -12,7 +12,7 @@ export const Footer = () => {
                 <FileText className="h-5 w-5 text-primary-foreground" />
               </div>
               <span className="text-lg font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                DocuTools
+                VedaTools
               </span>
             </div>
             <p className="text-sm text-muted-foreground">
@@ -60,7 +60,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t mt-8 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} DocuTools - <a href="https://vedavue.co.in/" className="hover:text-primary underline">VedaVue</a>. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} VedaTools - <a href="https://vedavue.co.in/" className="hover:text-primary underline">VedaVue</a>. All rights reserved.</p>
         </div>
       </div>
     </footer>
