@@ -15,7 +15,7 @@ export const Header = () => {
             {/* Text + Tagline */}
             <div className="flex flex-col leading-tight">
               <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                DocuTools
+                VedaTools
               </span>
               <span className="text-xs text-muted-foreground mt-0.5">
                 by VedaVue
